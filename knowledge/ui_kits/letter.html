@@ -1,0 +1,305 @@
+<!doctype html>
+<!-- @dsCard group="UI Kit" name="Letter (A4)" subtitle="Formal proposal letter + notification letter, print-ready A4" -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Modelo de Carta · Gauss Energia</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  @page { size: A4; margin: 0; }
+  body { margin: 0; background: #d9dcd8; padding: 40px 0; font-family: 'Sora', system-ui, sans-serif; }
+
+  /* A4 sheet, 210x297mm → 794x1123px at 96dpi */
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto 24px;
+    background: white;
+    box-shadow: 0 24px 48px -16px rgba(0,0,0,0.18);
+    position: relative;
+    padding: 22mm 24mm 26mm;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+  @media print {
+    body { background: white; padding: 0; }
+    .sheet { box-shadow: none; margin: 0; }
+    .print-toolbar { display: none; }
+  }
+
+  .print-toolbar { position: fixed; top: 24px; right: 24px; background: var(--ink-1000); color: white; padding: 12px 16px; border-radius: 8px; font-size: 12px; font-family: 'JetBrains Mono'; letter-spacing: 0.06em; display: flex; gap: 12px; align-items: center; z-index: 10; box-shadow: var(--shadow-md); }
+  .print-toolbar button { background: var(--gauss-green); color: var(--ink-1000); border: none; padding: 6px 12px; border-radius: 4px; font-family: 'Sora'; font-weight: 400; font-size: 11px; letter-spacing: 0.10em; text-transform: uppercase; cursor: pointer; }
+
+  /* Letterhead */
+  .letterhead {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 10mm;
+    border-bottom: 1px solid var(--ink-200);
+    margin-bottom: 14mm;
+  }
+  .letterhead .brand { display: flex; align-items: center; gap: 14px; }
+  .letterhead .brand .sq { width: 44px; height: 44px; background: var(--ink-1000); border-radius: 8px; display: grid; place-items: center; }
+  .letterhead .brand .sq svg { width: 100%; height: 100%; }
+  .letterhead .brand .wm { font-family: 'Bebas Neue', 'Sora', sans-serif; font-weight: 400; font-size: 28px; letter-spacing: 0.08em; color: var(--ink-900); line-height: 1; text-transform: uppercase; }
+  .letterhead .brand .tg { font-family: 'Sora'; font-weight: 300; font-size: 8.5px; letter-spacing: 0.26em; color: var(--gauss-green-700); margin-top: 4px; }
+  .letterhead .right { font-family: 'JetBrains Mono'; font-weight: 400; font-size: 9.5px; color: var(--fg-3); line-height: 1.7; letter-spacing: 0.06em; text-align: right; }
+  .letterhead .right b { font-family: 'Sora'; font-weight: 400; color: var(--ink-900); }
+
+  /* Recipient & date */
+  .meta-block { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10mm; }
+  .recipient .lbl { font-family: 'Sora'; font-size: 9px; font-weight: 300; letter-spacing: 0.22em; text-transform: uppercase; color: var(--fg-3); margin-bottom: 6px; }
+  .recipient .who { font-family: 'Sora'; font-weight: 400; font-size: 14px; color: var(--ink-900); letter-spacing: -0.005em; }
+  .recipient .addr { font-size: 11px; font-weight: 300; color: var(--fg-2); line-height: 1.65; margin-top: 4px; }
+  .dateblock { text-align: right; font-family: 'JetBrains Mono'; font-size: 10px; letter-spacing: 0.08em; color: var(--fg-3); line-height: 1.7; }
+  .dateblock .city { font-family: 'Sora'; font-weight: 400; color: var(--ink-900); font-size: 11px; letter-spacing: 0; }
+
+  /* Reference + subject */
+  .reference {
+    background: var(--ink-50);
+    padding: 14px 18px;
+    border-left: 3px solid var(--gauss-green);
+    margin-bottom: 10mm;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 6px 16px;
+    align-items: baseline;
+  }
+  .reference .k { font-family: 'Sora'; font-size: 9px; font-weight: 300; letter-spacing: 0.20em; text-transform: uppercase; color: var(--fg-3); }
+  .reference .v { font-family: 'Sora'; font-weight: 300; font-size: 12px; color: var(--ink-900); }
+  .reference .v.subject { font-weight: 400; font-size: 14px; letter-spacing: -0.005em; }
+
+  /* Body */
+  .salutation { font-family: 'Sora'; font-size: 12px; font-weight: 300; color: var(--ink-900); margin: 0 0 8mm; }
+  .body-text { font-size: 11.5px; line-height: 1.8; color: var(--ink-700); font-weight: 200; }
+  .body-text p { margin: 0 0 5mm; text-align: justify; text-justify: inter-word; }
+  .body-text p b { font-family: 'Sora'; font-weight: 400; color: var(--ink-900); }
+  .body-text .num { font-family: 'Sora'; font-weight: 400; font-variant-numeric: tabular-nums; color: var(--gauss-green-900); }
+  .body-text ul { padding-left: 18px; margin: 0 0 5mm; }
+  .body-text li { margin-bottom: 2mm; }
+
+  .closing { margin-top: auto; padding-top: 16mm; }
+  .closing .signoff { font-family: 'Sora'; font-size: 12px; font-weight: 300; color: var(--ink-900); margin-bottom: 18mm; }
+  .signature {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    padding-top: 6mm;
+    border-top: 1px solid var(--ink-200);
+  }
+  .signature .name { font-family: 'Sora'; font-weight: 400; font-size: 13px; color: var(--ink-900); letter-spacing: -0.005em; }
+  .signature .role { font-size: 10px; font-weight: 300; color: var(--fg-2); margin-top: 2px; }
+  .signature .crea { font-family: 'JetBrains Mono'; font-size: 9.5px; color: var(--fg-3); margin-top: 4px; letter-spacing: 0.06em; }
+  .signature .seal { font-family: 'Sora'; font-size: 8.5px; font-weight: 300; letter-spacing: 0.20em; text-transform: uppercase; color: var(--gauss-green-700); padding: 8px 12px; border: 1px solid var(--gauss-green); border-radius: 4px; align-self: flex-start; }
+
+  /* Footer */
+  .sheet-footer {
+    position: absolute;
+    left: 24mm;
+    right: 24mm;
+    bottom: 14mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 6mm;
+    border-top: 1px solid var(--ink-200);
+    font-family: 'JetBrains Mono';
+    font-size: 8.5px;
+    color: var(--fg-3);
+    letter-spacing: 0.08em;
+  }
+  .sheet-footer .stripes { display: flex; gap: 3px; }
+  .sheet-footer .stripes div { width: 18px; height: 4px; border-radius: 1px; }
+
+  /* Variant 2: notification letter — shorter, more visual */
+  .sheet--alt .body-hero {
+    background: var(--ink-1000);
+    color: white;
+    border-radius: 12px;
+    padding: 10mm 12mm;
+    margin: 0 0 8mm;
+  }
+  .sheet--alt .body-hero .eb { font-family: 'Sora'; font-size: 9px; font-weight: 300; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gauss-green); margin-bottom: 6px; }
+  .sheet--alt .body-hero h2 { font-family: 'Sora'; font-weight: 300; font-size: 26px; letter-spacing: -0.015em; line-height: 1.2; color: white; margin: 0; max-width: 120mm; }
+  .sheet--alt .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 6mm; padding-top: 6mm; border-top: 1px solid rgba(255,255,255,0.12); }
+  .sheet--alt .stat-row .stat .v { font-family: 'Sora'; font-weight: 400; font-size: 22px; letter-spacing: -0.01em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .sheet--alt .stat-row .stat .v.green { color: var(--gauss-green); }
+  .sheet--alt .stat-row .stat .u { font-family: 'JetBrains Mono'; font-weight: 400; font-size: 8.5px; color: rgba(255,255,255,0.5); letter-spacing: 0.10em; margin-top: 4px; }
+
+  .badge-print { display: inline-flex; align-items: center; gap: 6px; font-family: 'Sora'; font-size: 8px; font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; background: var(--gauss-green-100); color: var(--gauss-green-900); border: 1px solid var(--gauss-green); }
+  .badge-print .dot { width: 5px; height: 5px; border-radius: 999px; background: var(--gauss-green); }
+
+  .letterhead .brand .brand-logo { height: 64px; width: auto; display: block; }
+
+  /* halfway mark lockup */
+  .letterhead .brand { display: flex; align-items: center; gap: 14px; }
+  .letterhead .brand .hw-mark { height: 58px; width: auto; display: block; }
+</style>
+</head>
+<body>
+
+<div class="print-toolbar">
+  MODELO DE CARTA · A4 · GAUSS
+  <button onclick="window.print()">IMPRIMIR</button>
+</div>
+
+<!-- =========================================================
+     SHEET 1 — Formal letter (proposta / ofício)
+     ========================================================= -->
+<div class="sheet">
+  <div class="letterhead">
+    <div class="brand">
+      <img class="hw-mark" src="../assets/gauss-logo-mark.svg" alt="Gauss">
+      <div>
+        <div class="wm">GAUSS</div>
+        <div class="tg">SOLAR · BESS · EV</div>
+      </div>
+    </div>
+    <div class="right">
+      <b>Gauss Energia Ltda.</b><br>
+      CNPJ 00.000.000/0001-00<br>
+      Av. Tancredo Neves, 1283 · Sala 1408<br>
+      Salvador / BA · 41820-021
+    </div>
+  </div>
+
+  <div class="meta-block">
+    <div class="recipient">
+      <div class="lbl">À</div>
+      <div class="who">Sr. Bento Bentolo</div>
+      <div class="addr">Rua das Acácias, 412 · Apto 902<br>Caminho das Árvores · Salvador / BA<br>CEP 41820-902</div>
+    </div>
+    <div class="dateblock">
+      <div class="city">Salvador, 15 de julho de 2025</div>
+      <div style="margin-top: 10px;">REF · 100020.1-A</div>
+      <div>VIA · CORRESPONDÊNCIA REGISTRADA</div>
+    </div>
+  </div>
+
+  <div class="reference">
+    <div class="k">Assunto</div><div class="v subject">Proposta comercial — Sistema fotovoltaico 12,075 kWp</div>
+    <div class="k">Vigência</div><div class="v">30 dias a contar da emissão</div>
+  </div>
+
+  <div class="salutation">Prezado Sr. Bentolo,</div>
+
+  <div class="body-text">
+    <p>Em atenção à sua solicitação, apresentamos formalmente a proposta comercial para o fornecimento, instalação e comissionamento de sistema fotovoltaico residencial, dimensionado para sua unidade consumidora em Caminho das Árvores.</p>
+
+    <p>O projeto contempla <b>21 módulos OSDA 575 W</b> e inversor de <b>9 kW</b>, totalizando uma potência instalada de <span class="num">12,075 kWp</span>. A geração média estimada é de <span class="num">1.448 kWh / mês</span>, suficiente para cobrir aproximadamente <span class="num">97 %</span> do seu consumo atual.</p>
+
+    <p>Conforme detalhado no anexo técnico (proposta nº <b>100020.1-A</b>), o investimento total é de <span class="num">R$ 24.610,12</span> à vista, com payback estimado em <span class="num">1,1 anos</span> e economia mensal de <span class="num">R$ 1.532</span> sobre a conta atual. O escopo inclui:</p>
+
+    <ul>
+      <li>Fornecimento dos módulos e inversor conforme especificação técnica;</li>
+      <li>Instalação eletromecânica completa a partir do ponto de entrega;</li>
+      <li>Testes, configuração e comissionamento;</li>
+      <li>Homologação junto à Coelba, com acompanhamento técnico;</li>
+      <li>Entrega técnica com relatório de conformidade elétrica (ABNT NBR 5410, NBR 17790, NR-10).</li>
+    </ul>
+
+    <p>Permanecemos à disposição para esclarecer quaisquer dúvidas técnicas ou comerciais. Para confirmar o aceite, basta responder a esta correspondência ou contatar-nos pelos canais abaixo.</p>
+  </div>
+
+  <div class="closing">
+    <div class="signoff">Atenciosamente,</div>
+    <div class="signature">
+      <div>
+        <div class="name">Eng. Ricardo Almeida</div>
+        <div class="role">Engenheiro Eletricista · Responsável Técnico</div>
+        <div class="crea">CREA-BA 0123456-7</div>
+      </div>
+      <div class="seal">PROPOSTA · 100020.1-A</div>
+    </div>
+  </div>
+
+  <div class="sheet-footer">
+    <div class="stripes">
+      <div style="background: #8FD79A;"></div>
+      <div style="background: #39B54A;"></div>
+      <div style="background: #1B5D24;"></div>
+    </div>
+    <div>COMERCIAL@GAUSS.ENERGIA · +55 71 99999-0000 · GAUSS.ENERGIA</div>
+    <div>1 / 1</div>
+  </div>
+</div>
+
+<!-- =========================================================
+     SHEET 2 — Notification letter (shorter, visual)
+     ========================================================= -->
+<div class="sheet sheet--alt">
+  <div class="letterhead">
+    <div class="brand">
+      <img class="hw-mark" src="../assets/gauss-logo-mark.svg" alt="Gauss">
+      <div>
+        <div class="wm">GAUSS</div>
+        <div class="tg">SOLAR · BESS · EV</div>
+      </div>
+    </div>
+    <div class="right">
+      <b>Comunicado de homologação</b><br>
+      DOC-2025-00482<br>
+      Emitido em 04 ago 2025
+    </div>
+  </div>
+
+  <div class="meta-block">
+    <div class="recipient">
+      <div class="lbl">À</div>
+      <div class="who">Sr. Bento Bentolo</div>
+      <div class="addr">UC 3.000.412 · Coelba</div>
+    </div>
+    <div class="dateblock">
+      <span class="badge-print"><span class="dot"></span>Homologado</span>
+      <div style="margin-top: 10px;">REF · 100020.1-A</div>
+    </div>
+  </div>
+
+  <div class="body-hero">
+    <div class="eb">SUA INSTALAÇÃO ESTÁ ATIVA</div>
+    <h2>Seu sistema foi homologado pela Coelba e iniciou a geração de energia.</h2>
+    <div class="stat-row">
+      <div class="stat"><div class="v green">12,075</div><div class="u">kWp INSTALADOS</div></div>
+      <div class="stat"><div class="v">1.448</div><div class="u">kWh/mês ESTIMADOS</div></div>
+      <div class="stat"><div class="v green">04 AGO</div><div class="u">INÍCIO DA GERAÇÃO</div></div>
+    </div>
+  </div>
+
+  <div class="salutation">Prezado Sr. Bentolo,</div>
+
+  <div class="body-text">
+    <p>Comunicamos formalmente a conclusão e homologação do seu sistema fotovoltaico junto à concessionária <b>Coelba</b>. O equipamento entrou em operação no dia <b>4 de agosto de 2025</b> e já está produzindo créditos energéticos na sua unidade consumidora.</p>
+
+    <p>A garantia da instalação cobre <span class="num">1 ano</span> a partir desta data. Os módulos e o inversor seguem garantia de <span class="num">10 anos</span> diretamente com os fabricantes. O acompanhamento técnico inicial será realizado pelos próximos <span class="num">30 dias</span>.</p>
+
+    <p>Em caso de qualquer anomalia — geração abaixo da estimativa, alerta no inversor ou queda na conexão — entre em contato com nosso suporte técnico imediatamente.</p>
+  </div>
+
+  <div class="closing">
+    <div class="signoff">Atenciosamente,</div>
+    <div class="signature">
+      <div>
+        <div class="name">Eng. Ricardo Almeida</div>
+        <div class="role">Responsável Técnico</div>
+        <div class="crea">CREA-BA 0123456-7</div>
+      </div>
+      <div class="seal">SUPORTE 24/7</div>
+    </div>
+  </div>
+
+  <div class="sheet-footer">
+    <div class="stripes">
+      <div style="background: #8FD79A;"></div>
+      <div style="background: #39B54A;"></div>
+      <div style="background: #1B5D24;"></div>
+    </div>
+    <div>SUPORTE@GAUSS.ENERGIA · +55 71 99999-0000</div>
+    <div>1 / 1</div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!doctype html>
+<!-- @dsCard group="Proposals · iPhone" name="EV service proposal — iPhone" subtitle="Vertical 1290×2796 — EV charger + operation (CPO)" viewport="430x932" -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proposta EV Serviço · iPhone · Gauss Energia</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  /* ===== iPhone canvas =========================================
+     Fixed 1290 × 2796 px (iPhone 16 Pro Max portrait, max res).
+     Scaled to fit the viewport via JS. One continuous column.
+     ============================================================ */
+  body { margin: 0; background: var(--ink-300); }
+  .viewport { display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; }
+  .phone {
+    width: 1290px; min-height: 2796px; background: white; position: relative;
+    transform-origin: top center; box-shadow: var(--shadow-lg);
+    display: flex; flex-direction: column;
+  }
+  :root { --m: 96px; }            /* side margin */
+
+  /* ---- cover ---- */
+  .cover { background: var(--ink-1000); color: white; padding: 110px var(--m) 96px; position: relative; overflow: hidden; }
+  .cover::after { content: ""; position: absolute; right: -300px; bottom: -300px; width: 760px; height: 760px; border-radius: 50%; background: radial-gradient(circle at center, rgba(57,181,74,0.20), transparent 62%); }
+  .mark { display: flex; align-items: center; gap: 22px; position: relative; z-index: 1; }
+  .mark .hw-mark { height: 96px; width: auto; display: block; }
+  .mark .wm { display: flex; flex-direction: column; gap: 10px; }
+  .mark .w { font-family: var(--font-wordmark); font-weight: 400; font-size: 50px; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1; }
+  .mark .tg { font-family: var(--font-display); font-weight: 600; font-size: 19px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gauss-green); }
+  .cover .eb { font-family: var(--font-display); font-size: 21px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gauss-green); margin: 120px 0 28px; position: relative; z-index: 1; }
+  .cover h1 { font-family: var(--font-display); font-weight: 800; font-size: 118px; line-height: 0.96; letter-spacing: -0.03em; margin: 0 0 32px; color: white; position: relative; z-index: 1; }
+  .cover .sub { font-size: 30px; color: rgba(255,255,255,0.74); line-height: 1.5; position: relative; z-index: 1; }
+  .cover .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 56px; margin-top: 84px; padding-top: 56px; border-top: 1px solid rgba(255,255,255,0.14); position: relative; z-index: 1; }
+  .cover .stat .v { font-family: var(--font-display); font-weight: 800; font-size: 70px; letter-spacing: -0.02em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .cover .stat .v.green { color: var(--gauss-green); }
+  .cover .stat .u { font-family: var(--font-mono); font-size: 19px; color: rgba(255,255,255,0.55); margin-top: 14px; letter-spacing: 0.04em; }
+
+  /* ---- shared section ---- */
+  .sec { padding: 96px var(--m); border-bottom: 1px solid var(--border-hairline); }
+  .num-head { display: flex; align-items: baseline; gap: 22px; margin-bottom: 32px; }
+  .num-head .n { font-family: var(--font-mono); font-size: 22px; color: var(--gauss-green-700); letter-spacing: 0.08em; }
+  .num-head h2 { font-family: var(--font-display); font-weight: 700; font-size: 66px; letter-spacing: -0.02em; line-height: 1.05; margin: 0; color: var(--ink-900); }
+  .lead { color: var(--fg-2); font-size: 28px; line-height: 1.55; margin: 0 0 8px; }
+
+  /* image slot */
+  .img-slot { display: flex; align-items: center; justify-content: center;
+    background:
+      repeating-linear-gradient(135deg, rgba(7,16,10,0.035) 0 26px, transparent 26px 52px),
+      linear-gradient(180deg, var(--ink-200), var(--ink-300));
+    color: var(--ink-500); }
+  .img-slot .tag { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
+  .img-slot .tag svg { width: 64px; height: 64px; opacity: 0.55; }
+  .img-slot .tag .t { font-family: var(--font-display); font-weight: 600; font-size: 24px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .img-slot .tag .s { font-family: var(--font-mono); font-size: 20px; color: var(--ink-400); }
+
+  /* ---- Quem é a Gauss (reduced) ---- */
+  .who { padding: 0; border-bottom: 1px solid var(--border-hairline); }
+  .hero-photo { position: relative; width: 100%; height: 720px; }
+  .hero-photo .img-slot { width: 100%; height: 100%; }
+  .hero-photo::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(7,16,10,0.38), rgba(7,16,10,0) 48%); }
+  .hero-photo .h-title { position: absolute; left: var(--m); top: 84px; z-index: 2; font-family: var(--font-display); font-weight: 300; font-size: 116px; line-height: 0.95; letter-spacing: -0.01em; color: white; text-shadow: 0 4px 30px rgba(0,0,0,0.4); }
+  .stripe-band { height: 96px; display: flex; overflow: hidden; }
+  .stripe-band > span { flex: 1; transform: skewX(-22deg); margin: 0 -20px; }
+  .stripe-band > span:nth-child(1) { background: var(--gauss-green-700); }
+  .stripe-band > span:nth-child(2) { background: var(--gauss-green); }
+  .stripe-band > span:nth-child(3) { background: #9BD038; }
+  .stripe-band > span:nth-child(4) { background: #E9DD16; }
+  .who-copy { padding: 80px var(--m) 0; }
+  .who-copy .kicker { font-family: var(--font-display); font-size: 21px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gauss-green-700); margin-bottom: 24px; }
+  .who-copy p { font-size: 29px; line-height: 1.55; color: var(--fg-2); margin: 0 0 26px; }
+  .who-copy b { color: var(--ink-900); font-weight: 700; }
+  .who-map { margin: 56px var(--m) 0; border-radius: 18px; overflow: hidden; border: 1px solid var(--border-hairline); position: relative; height: 720px; }
+  .who-map img { width: 100%; height: 100%; object-fit: cover; object-position: 58% 42%; display: block; }
+  .who-map .cap { position: absolute; left: 28px; bottom: 28px; display: inline-flex; align-items: center; gap: 14px; padding: 16px 24px; background: rgba(7,16,10,0.82); border-radius: 999px; font-family: var(--font-mono); font-size: 19px; letter-spacing: 0.04em; color: rgba(255,255,255,0.92); }
+  .who-map .cap .dot { width: 16px; height: 16px; border-radius: 999px; background: var(--gauss-green); box-shadow: 0 0 0 7px rgba(57,181,74,0.3); }
+  .who-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin: 16px var(--m) 0; padding: 56px 0 96px; }
+  .who-stats .v { font-family: var(--font-display); font-weight: 800; font-size: 64px; color: var(--gauss-green-700); letter-spacing: -0.02em; line-height: 1; }
+  .who-stats .u { font-family: var(--font-mono); font-size: 19px; color: var(--fg-3); margin-top: 12px; line-height: 1.35; }
+
+  /* customer */
+  .customer-block { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 36px; padding: 44px; background: var(--ink-50); border-radius: 22px; }
+  .customer-block .row3 { grid-column: 1 / -1; }
+  .customer-block .k { font-family: var(--font-mono); font-size: 19px; color: var(--fg-3); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 10px; }
+  .customer-block .v { font-family: var(--font-display); font-weight: 700; font-size: 38px; letter-spacing: -0.01em; }
+
+  /* scope */
+  .scope-col { margin-top: 40px; }
+  .scope-col h3 { font-family: var(--font-display); font-weight: 600; font-size: 30px; color: var(--ink-900); margin: 0 0 22px; padding-bottom: 18px; border-bottom: 1px solid var(--border-hairline); display: flex; align-items: center; gap: 14px; }
+  .scope-col h3 .dot { width: 16px; height: 16px; background: var(--gauss-green); border-radius: 4px; }
+  .scope-col.excl h3 .dot { background: var(--ink-400); }
+  .scope-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 18px; }
+  .scope-col li { font-size: 26px; line-height: 1.45; color: var(--fg-2); padding-left: 34px; position: relative; }
+  .scope-col li::before { content: ""; position: absolute; left: 0; top: 0.7em; width: 18px; height: 2px; background: var(--gauss-green); }
+  .scope-col.excl li::before { background: var(--ink-300); }
+
+  /* equipment */
+  .eq-photo { width: 100%; height: 760px; border-radius: 22px; overflow: hidden; margin-top: 40px; }
+  .eq-table { width: 100%; border-collapse: collapse; margin-top: 40px; }
+  .eq-table tr { border-bottom: 1px solid var(--border-hairline); }
+  .eq-table tr:last-child { border-bottom: none; }
+  .eq-table td { padding: 26px 0; font-size: 27px; }
+  .eq-table td:first-child { color: var(--fg-3); font-family: var(--font-display); font-size: 21px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+  .eq-table td:last-child { text-align: right; font-family: var(--font-display); font-weight: 600; color: var(--ink-900); font-variant-numeric: tabular-nums; }
+  .eq-meta { display: flex; flex-wrap: wrap; gap: 26px; margin-top: 36px; padding: 34px 40px; background: var(--ink-1000); border-radius: 18px; color: white; font-family: var(--font-mono); font-size: 22px; letter-spacing: 0.04em; }
+  .eq-meta .g { color: var(--gauss-green); }
+
+  /* premissas + cronograma */
+  .pn { display: flex; gap: 28px; padding: 26px 0; border-bottom: 1px solid var(--border-hairline); }
+  .pn .ix { font-family: var(--font-mono); font-size: 21px; color: var(--gauss-green-700); margin-top: 6px; min-width: 70px; }
+  .pn .tx { font-size: 26px; color: var(--fg-2); line-height: 1.5; }
+  .cron { margin-top: 48px; }
+  .cron-row { display: grid; grid-template-columns: 70px 1fr auto; gap: 20px; align-items: baseline; padding: 26px 0; border-bottom: 1px solid var(--border-hairline); }
+  .cron-row .nm { font-family: var(--font-mono); font-size: 22px; color: var(--gauss-green-700); }
+  .cron-row .et { font-size: 27px; color: var(--ink-900); font-weight: 500; }
+  .cron-row .et small { display: block; font-size: 21px; color: var(--fg-3); font-weight: 400; margin-top: 6px; }
+  .cron-row .dur { font-family: var(--font-display); font-weight: 700; font-size: 30px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  /* investimento */
+  .invest-hero { background: var(--gauss-green); color: var(--ink-1000); border-radius: 24px; padding: 56px; margin-top: 40px; }
+  .invest-hero .label { font-family: var(--font-display); font-size: 22px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.75; margin-bottom: 18px; }
+  .invest-hero .big { font-family: var(--font-display); font-weight: 800; font-size: 110px; letter-spacing: -0.02em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .invest-hero .note { font-size: 25px; opacity: 0.9; margin-top: 36px; line-height: 1.5; }
+  .invest-table { width: 100%; border-collapse: collapse; margin-top: 44px; }
+  .invest-table th, .invest-table td { padding: 24px 24px; text-align: left; }
+  .invest-table th { font-family: var(--font-display); font-size: 21px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-3); background: var(--ink-50); border-bottom: 1px solid var(--border-hairline); }
+  .invest-table td { border-bottom: 1px solid var(--border-hairline); font-size: 27px; font-variant-numeric: tabular-nums; }
+  .invest-table td:first-child { font-family: var(--font-display); font-weight: 600; }
+  .invest-table td:nth-child(n+2) { text-align: right; font-family: var(--font-display); }
+  .invest-table tr.featured td { background: var(--gauss-green-100); border-bottom-color: var(--gauss-green); }
+  .invest-table tr.featured td:first-child { color: var(--gauss-green-900); }
+
+  /* footer */
+  .footer { background: var(--ink-1000); color: white; padding: 88px var(--m); }
+  .footer .ft-mark { display: flex; align-items: center; gap: 22px; margin-bottom: 40px; }
+  .footer .ft-mark .hw-mark { height: 84px; }
+  .footer .ft-mark .w { font-family: var(--font-wordmark); font-size: 46px; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1; color: white; }
+  .footer .ft-mark .tg { font-family: var(--font-display); font-weight: 600; font-size: 18px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gauss-green); }
+  .footer h3 { font-family: var(--font-display); font-weight: 700; font-size: 52px; color: white; margin: 0 0 24px; }
+  .footer .contact { font-family: var(--font-mono); font-size: 23px; color: rgba(255,255,255,0.62); line-height: 1.7; }
+  .footer .seal { margin-top: 48px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.14); font-family: var(--font-mono); font-size: 21px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+  .footer .seal .eb { font-family: var(--font-display); font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gauss-green); margin-bottom: 12px; }
+
+  .op-card { background: var(--ink-1000); color: white; border-radius: 24px; padding: 56px; margin-top: 40px; }
+  .op-card .op-eb { font-family: var(--font-display); font-size: 21px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gauss-green); margin-bottom: 22px; }
+  .op-card .op-v { font-family: var(--font-display); font-weight: 800; font-size: 92px; letter-spacing: -0.02em; line-height: 1; }
+  .op-card .op-v span { font-size: 34px; font-weight: 600; color: rgba(255,255,255,0.6); }
+  .op-card .op-s { color: rgba(255,255,255,0.6); font-size: 24px; margin-top: 20px; }
+  .op-card .op-tags { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 40px; }
+  .op-card .op-tags span { font-family: var(--font-mono); font-size: 18px; letter-spacing: 0.04em; color: var(--gauss-green); border: 1px solid rgba(57,181,74,0.4); border-radius: 999px; padding: 10px 22px; }
+
+  .cover .cover-meta { font-family: var(--font-mono); font-size: 19px; color: rgba(255,255,255,0.55); letter-spacing: 0.05em; line-height: 1.7; margin-top: 26px; position: relative; z-index: 1; text-transform: uppercase; }
+  .cover .cover-meta b { color: var(--gauss-green); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="viewport">
+  <div class="phone" id="phone">
+
+    <header class="cover" data-screen-label="iPhone 01 Capa">
+      <div class="mark">
+        <img class="hw-mark" src="../assets/gauss-logo-mark-white.svg" alt="Gauss">
+        <div class="wm"><div class="w">GAUSS</div><div class="tg">SOLAR · BESS · EV</div></div>
+      </div>
+      <div class="cover-meta"><b>Hotel Vila do Mar</b><br>Proposta 100588.1‑C</div>
+      <div class="eb">RECARGA · CARREGADOR + OPERAÇÃO</div>
+      <h1>Recarga<br>para seus<br>clientes.</h1>
+      <div class="sub">5 pontos de recarga para o Hotel Vila do Mar — 1 DC de 60 kW e 4 wallboxes AC de 22 kW, instalados e operados pela Gauss.</div>
+      <div class="stats"><div class="stat"><div class="v green">5</div><div class="u">PONTOS</div></div><div class="stat"><div class="v">142</div><div class="u">kW TOTAL</div></div><div class="stat"><div class="v green">R$ 1.890</div><div class="u">/MÊS OPERAÇÃO</div></div><div class="stat"><div class="v">24/7</div><div class="u">MONITORAMENTO</div></div></div>
+    </header>
+
+    <section class="who" data-screen-label="iPhone 02 Quem é a Gauss">
+      <div class="hero-photo">
+        <div class="h-title">Quem é<br>a Gauss?</div>
+        <div class="img-slot" data-img-slot="hero">
+          <div class="tag">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="M21 16l-5-5L5 20"/></svg>
+            <div class="t">Foto institucional</div><div class="s">Sede / projeto · paisagem</div>
+          </div>
+        </div>
+      </div>
+      <div class="stripe-band"><span></span><span></span><span></span><span></span></div>
+      <div class="who-copy">
+        <div class="kicker">Sobre a Gauss</div>
+        <p>A <b>Gauss Energia</b> surgiu em 2016 do desejo de 4 engenheiros de construir um futuro mais sustentável. Hoje somos mais de <b>50 colaboradores</b> em engenharia, instalação e comercial.</p>
+        <p>Matriz em Salvador e filial em Irecê, ambas com galpão logístico próprio e estoque de equipamentos para reposição — mais agilidade na instalação e na manutenção pós‑venda.</p>
+      </div>
+      <div class="who-map" data-img-slot="map">
+        <img src="../assets/mapa-instalacoes.png" alt="Mapa de instalações Gauss na Bahia e Nordeste">
+        <div class="cap"><span class="dot"></span>Cada ponto = um sistema em operação</div>
+      </div>
+      <div class="who-stats">
+        <div><div class="v">3.000+</div><div class="u">PROJETOS ENTREGUES</div></div>
+        <div><div class="v">120 mil</div><div class="u">EQUIPAMENTOS</div></div>
+        <div><div class="v">5</div><div class="u">ESTADOS ATENDIDOS</div></div>
+      </div>
+    </section>
+
+    <section class="sec" data-screen-label="iPhone 03 Escopo">
+      <div class="num-head"><span class="n">01 ·</span><h2>Cliente<br>e escopo</h2></div>
+      <p class="lead">Fornecimento, instalação e operação contínua de recarga veicular em modelo carregador + serviço: o cliente adquire o equipamento e a Gauss opera os pontos.</p>
+      <div class="customer-block">
+        <div><div class="k">Cliente</div><div class="v">Hotel Vila do Mar</div></div>
+        <div><div class="k">Cidade</div><div class="v">Salvador / BA</div></div>
+        <div class="row3"><div class="k">Pontos de recarga</div><div class="v">5 · 1 DC + 4 AC</div></div>
+      </div>
+      <div class="scope-col"><h3><span class="dot"></span>Incluído</h3><ul><li>Fornecimento e instalação dos 5 carregadores</li><li>Plataforma de gestão Gauss — app e pagamento</li><li>Monitoramento e operação 24/7</li><li>Manutenção e suporte ao usuário</li></ul></div>
+      <div class="scope-col excl"><h3><span class="dot"></span>Não incluído</h3><ul><li>Obra civil de pátio e sinalização</li><li>Ampliação do padrão de entrada</li><li>Custo da energia consumida (repassado)</li></ul></div>
+    </section>
+
+    <section class="sec" data-screen-label="iPhone 04 Equipamentos">
+      <div class="num-head"><span class="n">02 ·</span><h2>Equipamentos</h2></div>
+      <p class="lead">5 pontos — 1 fast charger DC de 60 kW (CCS2) e 4 wallboxes AC de 22 kW (Type 2), com gestão OCPP 1.6J.</p>
+      <div class="eq-photo img-slot" data-img-slot="equip">
+        <div class="tag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M3 9h18M9 4v13M15 4v13M2 21h20"/></svg>
+          <div class="t">Imagem do equipamento</div><div class="s">Carregador DC / wallbox</div>
+        </div>
+      </div>
+      <table class="eq-table"><tr><td>Fast charger DC</td><td>1× 60 kW · CCS2</td></tr><tr><td>Wallbox AC</td><td>4× 22 kW · Type 2</td></tr><tr><td>Protocolo</td><td>OCPP 1.6J</td></tr><tr><td>Conectividade</td><td>4G + Wi‑Fi</td></tr><tr><td>Pagamento</td><td>App · Pix · cartão</td></tr><tr><td>Garantia hardware</td><td>2 anos</td></tr></table>
+      <div class="eq-meta"><div class="g">142 kW</div><div>·</div><div class="g">1 DC + 4 AC</div><div>·</div><div class="g">OCPP</div><div>·</div><div>5 PONTOS</div></div>
+    </section>
+
+    <section class="sec" data-screen-label="iPhone 05 Operação Gauss">
+      <div class="num-head"><span class="n">03 ·</span><h2>Operação<br>&amp; serviço</h2></div>
+      <p class="lead">Você não administra nada. A Gauss opera os pontos como CPO e você recebe relatórios e a receita de recarga.</p>
+      <div class="op-card">
+        <div class="op-eb">PLANO DE OPERAÇÃO</div>
+        <div class="op-v">R$ 1.890<span> /mês</span></div>
+        <div class="op-s">Gestão completa dos 5 pontos · 36 meses</div>
+        <div class="op-tags"><span>APP + PAGAMENTO</span><span>MONITORAMENTO 24/7</span><span>MANUTENÇÃO</span></div>
+      </div>
+      <table class="eq-table">
+        <tr><td>Disponibilidade (SLA)</td><td>≥ 98 %</td></tr>
+        <tr><td>Atendimento</td><td>24/7 · app e telefone</td></tr>
+        <tr><td>Tempo de resposta</td><td>≤ 4 h remoto</td></tr>
+        <tr><td>Manutenção preventiva</td><td>Trimestral</td></tr>
+        <tr><td>Repasse de receita</td><td>Mensal · por ponto</td></tr>
+      </table>
+    </section>
+
+    <section class="sec" data-screen-label="iPhone 06 Investimento" style="border-bottom:none">
+      <div class="num-head"><span class="n">04 ·</span><h2>Investimento</h2></div>
+      <div class="invest-hero">
+        <div class="label">EQUIPAMENTO + INSTALAÇÃO · À VISTA</div>
+        <div class="big">R$&nbsp;86.400<span style="font-size:52px">,00</span></div>
+        <div class="note">Hardware e instalação dos 5 pontos. Operação Gauss à parte: <b>R$ 1.890/mês</b> em contrato de 36 meses, com repasse da receita.</div>
+      </div>
+      <table class="invest-table"><thead><tr><th>Condição</th><th>Parcela</th><th>Total</th></tr></thead><tbody><tr class="featured"><td>Equip. à vista</td><td>—</td><td>R$ 86.400</td></tr><tr><td>Equip. 12×</td><td>R$ 7.632</td><td>R$ 91.584</td></tr><tr><td>Equip. 24×</td><td>R$ 4.104</td><td>R$ 98.496</td></tr><tr><td>Operação Gauss</td><td>R$ 1.890/mês</td><td>36 meses</td></tr></tbody></table>
+    </section>
+
+    <footer class="footer" data-screen-label="iPhone 07 Contato">
+      <div class="ft-mark">
+        <img class="hw-mark" src="../assets/gauss-logo-mark-white.svg" alt="Gauss">
+        <div class="wm" style="display:flex;flex-direction:column;gap:8px"><div class="w">GAUSS</div><div class="tg">SOLAR · BESS · EV</div></div>
+      </div>
+      <h3>Pronto para ligar os pontos?</h3>
+      <div class="contact">comercial@gauss.energia<br>+55 71 99999‑0000<br>Av. Tancredo Neves, 1283 · Salvador / BA</div>
+      <div class="seal"><div class="eb">PROPOSTA 100588.1‑C</div>Emitida 05 abr 2026 · Válida por 30 dias<br>Eng. Resp. CREA‑BA 000.000</div>
+    </footer>
+  </div>
+</div>
+</div>
+</div>
+<script>
+  // Scale the fixed 1290px canvas to fit the viewport width.
+  function fit() {
+    var ph = document.getElementById('phone');
+    var pad = 0;
+    var avail = window.innerWidth - pad;
+    var scale = Math.min(1, avail / 1290);
+    ph.style.transform = 'scale(' + scale + ')';
+    document.querySelector('.viewport').style.height = (ph.offsetHeight * scale) + 'px';
+  }
+  window.addEventListener('resize', fit);
+  window.addEventListener('load', fit);
+  fit();
+</script>
+</body>
+</html>

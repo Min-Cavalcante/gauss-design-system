@@ -1,0 +1,96 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Brand" subtitle="Gauss mark, lockup, sizing and misuse" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Gauss — Brand</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 56px; background: var(--bg-paper); }
+  .frame { max-width: 1200px; margin: 0 auto; }
+  .header { padding-bottom: 32px; border-bottom: 1px solid var(--border-hairline); margin-bottom: 48px; }
+  .header h1 { margin: 0 0 8px; font-size: 56px; font-weight: 800; letter-spacing: -0.03em; }
+  .header p { margin: 0; max-width: 560px; }
+  .row-label { font-family: var(--font-display); font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg-3); margin: 40px 0 16px; display: flex; align-items: center; gap: 12px; }
+  .row-label::after { content: ""; flex: 1; height: 1px; background: var(--border-hairline); }
+
+  .marks { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .mark-card { border-radius: 14px; padding: 56px; display: flex; flex-direction: column; align-items: center; gap: 28px; border: 1px solid var(--border-hairline); }
+  .mark-card.light { background: white; }
+  .mark-card.dark { background: var(--ink-1000); border-color: transparent; }
+  .mark-card img { width: 280px; height: auto; display: block; }
+  .mark-card .tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; align-self: flex-start; color: var(--fg-3); }
+  .mark-card.dark .tag { color: rgba(255,255,255,0.5); }
+
+  .lockup-card { background: white; border: 1px solid var(--border-hairline); border-radius: 14px; padding: 56px; }
+  .lockup-card img { width: 460px; max-width: 100%; height: auto; display: block; }
+
+  .sizes { display: flex; align-items: flex-end; gap: 40px; padding: 40px; background: var(--ink-1000); border-radius: 14px; flex-wrap: wrap; }
+  .sizes > div { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .sizes > div .lbl { font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,0.5); }
+  .sizes img { display: block; width: auto; }
+
+  .dont-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .dont { background: white; border: 1px solid var(--border-hairline); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 14px; }
+  .dont .stage { background: var(--ink-1000); border-radius: 8px; height: 110px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .dont .stage::after { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, transparent 49.3%, #D9534F 49.3%, #D9534F 50.7%, transparent 50.7%); }
+  .dont .stage img { width: 120px; height: auto; position: relative; z-index: 1; }
+  .dont .lbl { font-family: var(--font-display); font-size: 12px; font-weight: 600; color: #B7322E; letter-spacing: 0.04em; }
+  .dont .desc { font-size: 12px; color: var(--fg-3); line-height: 1.5; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <header class="header">
+    <div class="eyebrow" style="margin-bottom: 12px;">BRAND · 05</div>
+    <h1>Logo &amp; lockup</h1>
+    <p>Three green stripes with a diagonal cut, paired with the Bebas Neue wordmark and the tagline SOLAR · BESS · EV. One mark, two finishes — colour on light, reversed on dark.</p>
+  </header>
+
+  <div class="row-label">The mark</div>
+  <div class="marks">
+    <div class="mark-card light">
+      <div class="tag">COLOUR · ON LIGHT</div>
+      <img src="../assets/gauss-logo-mark.svg" alt="Gauss mark, colour">
+    </div>
+    <div class="mark-card dark">
+      <div class="tag">REVERSED · ON DARK</div>
+      <img src="../assets/gauss-logo-mark-white.svg" alt="Gauss mark, reversed">
+    </div>
+  </div>
+
+  <div class="row-label">Lockup — mark + wordmark + tagline</div>
+  <div class="lockup-card">
+    <img src="../assets/gauss-logo-lockup.svg" alt="Gauss Energia lockup">
+  </div>
+
+  <div class="row-label">Size &amp; application</div>
+  <div class="sizes">
+    <div><img src="../assets/gauss-logo-mark-white.svg" style="height: 24px;" alt=""><div class="lbl">24 px · min</div></div>
+    <div><img src="../assets/gauss-logo-mark-white.svg" style="height: 40px;" alt=""><div class="lbl">40 px · nav</div></div>
+    <div><img src="../assets/gauss-logo-mark-white.svg" style="height: 64px;" alt=""><div class="lbl">64 px · header</div></div>
+    <div><img src="../assets/gauss-logo-mark-white.svg" style="height: 96px;" alt=""><div class="lbl">96 px · hero</div></div>
+  </div>
+
+  <div class="row-label">Don't</div>
+  <div class="dont-row">
+    <div class="dont">
+      <div class="stage"><img src="../assets/gauss-logo-mark-white.svg" style="transform: rotate(-12deg);" alt=""></div>
+      <div><div class="lbl">don't tilt</div><div class="desc">Mark sits flat on its baseline. No rotation, no "dynamic" angles.</div></div>
+    </div>
+    <div class="dont">
+      <div class="stage" style="background: white;"><img src="../assets/gauss-logo-mark.svg" style="filter: grayscale(1);" alt=""></div>
+      <div><div class="lbl">don't desaturate</div><div class="desc">Keep the three greens. No greyscale, no single-colour fills.</div></div>
+    </div>
+    <div class="dont">
+      <div class="stage" style="background: url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=400') center/cover;"><img src="../assets/gauss-logo-mark-white.svg" alt=""></div>
+      <div><div class="lbl">don't float on busy photos</div><div class="desc">Back it with a solid panel for contrast and clear space.</div></div>
+    </div>
+    <div class="dont">
+      <div class="stage" style="background: #2B6CFF;"><img src="../assets/gauss-logo-mark-white.svg" alt=""></div>
+      <div><div class="lbl">don't recolour the field</div><div class="desc">Reversed mark goes on ink or brand green — not arbitrary colours.</div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

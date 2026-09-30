@@ -1,0 +1,156 @@
+<!doctype html>
+<!-- @dsCard group="Type" name="Type" subtitle="Sora scale, weights, and case rules" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Gauss — Type</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 56px; background: var(--bg-paper); font-family: 'Sora', system-ui, sans-serif; }
+  .frame, .frame * { font-family: 'Sora', system-ui, sans-serif; }
+  .frame .mono, .frame code, .frame .readout, .frame [class*="mono"], .specimen .tag, .specimen .meta, .weight .num[style*="mono"], .case-box .lbl, .data-callout .stat .u { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+  .frame { max-width: 1200px; margin: 0 auto; }
+  .header { padding-bottom: 32px; border-bottom: 1px solid var(--border-hairline); margin-bottom: 48px; }
+  .header h1 { margin: 0 0 8px; font-size: 56px; font-weight: 800; letter-spacing: -0.03em; }
+  .header p { margin: 0; max-width: 540px; }
+
+  .specimen { display: grid; grid-template-columns: 96px 1fr 220px; gap: 24px; align-items: baseline; padding: 24px 0; border-bottom: 1px solid var(--border-hairline); }
+  .specimen .tag { font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); }
+  .specimen .meta { font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); text-align: right; line-height: 1.5; }
+  .specimen .meta b { color: var(--fg-1); font-family: var(--font-display); font-weight: 600; }
+
+  .weights { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin: 48px 0; }
+  .weight { background: var(--bg-surface); border: 1px solid var(--border-hairline); border-radius: 10px; padding: 24px; }
+  .weight .num { font-family: var(--font-display); font-size: 64px; line-height: 1; letter-spacing: -0.03em; color: var(--ink-900); }
+  .weight .name { font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); margin-top: 12px; }
+
+  .case-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+  .case-box { background: var(--bg-surface); border: 1px solid var(--border-hairline); border-radius: 10px; padding: 24px; }
+  .case-box .lbl { font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); margin-bottom: 12px; }
+
+  .data-callout { background: var(--ink-1000); color: white; border-radius: 14px; padding: 48px; display: flex; align-items: center; justify-content: space-between; margin: 48px 0; }
+  .data-callout .lhs .eyebrow { color: var(--gauss-green); }
+  .data-callout .lhs h2 { color: white; font-size: 32px; margin: 8px 0 0; max-width: 360px; }
+  .data-callout .rhs { display: flex; gap: 48px; }
+  .data-callout .stat { text-align: right; }
+  .data-callout .stat .v { font-family: var(--font-display); font-weight: 800; font-size: 56px; line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+  .data-callout .stat .v.green { color: var(--gauss-green); }
+  .data-callout .stat .u { font-family: var(--font-mono); font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <header class="header">
+    <div class="eyebrow" style="margin-bottom: 12px;">FOUNDATIONS · 02 · <span id="font-status" style="color: var(--gauss-green-700);">CHECKING SORA…</span></div>
+    <h1>Type</h1>
+    <p>One family — <b>Sora</b>. Display weights are tight and confident; body sits at 16 px, line-height 1.55. Numbers always use tabular figures.</p>
+  </header>
+  <script>
+    document.fonts.ready.then(() => {
+      const ok = document.fonts.check('700 16px Sora') && document.fonts.check('400 16px Sora');
+      const el = document.getElementById('font-status');
+      el.textContent = ok ? 'SORA · LOADED 100/200/300/400/500/600/700/800' : 'SORA · FAILED — CHECK NETWORK';
+    });
+  </script>
+
+  <!-- Scale -->
+  <section style="margin-bottom: 48px;">
+    <div class="specimen">
+      <div class="tag">d1</div>
+      <div style="font-family: var(--font-display); font-weight: 800; font-size: 96px; line-height: 0.98; letter-spacing: -0.02em;">Energia que paga sua conta.</div>
+      <div class="meta"><b>96 / 0.98</b><br>Sora ExtraBold 800<br>–0.02em</div>
+    </div>
+    <div class="specimen">
+      <div class="tag">d2</div>
+      <div style="font-family: var(--font-display); font-weight: 700; font-size: 64px; line-height: 1; letter-spacing: -0.02em;">12,075 kWp instalados.</div>
+      <div class="meta"><b>64 / 1.00</b><br>Sora Bold 700<br>–0.02em</div>
+    </div>
+    <div class="specimen">
+      <div class="tag">h1</div>
+      <div style="font-family: var(--font-display); font-weight: 700; font-size: 36px; line-height: 1.12; letter-spacing: -0.01em;">Premissas técnicas e condições de instalação</div>
+      <div class="meta"><b>36 / 1.12</b><br>Sora Bold 700<br>–0.01em</div>
+    </div>
+    <div class="specimen">
+      <div class="tag">h2</div>
+      <div style="font-family: var(--font-display); font-weight: 700; font-size: 28px; line-height: 1.12; letter-spacing: -0.01em;">Escopo de fornecimento</div>
+      <div class="meta"><b>28 / 1.12</b><br>Sora Bold 700</div>
+    </div>
+    <div class="specimen">
+      <div class="tag">h3</div>
+      <div style="font-family: var(--font-display); font-weight: 600; font-size: 22px; line-height: 1.2;">Equipamentos ofertados</div>
+      <div class="meta"><b>22 / 1.20</b><br>Sora SemiBold 600</div>
+    </div>
+    <div class="specimen">
+      <div class="tag">h4</div>
+      <div style="font-family: var(--font-display); font-weight: 600; font-size: 18px;">Cronograma estimado</div>
+      <div class="meta"><b>18 / 1.20</b><br>Sora SemiBold 600</div>
+    </div>
+    <div class="specimen">
+      <div class="tag">body</div>
+      <div style="font-size: 16px; line-height: 1.55; color: var(--fg-2); max-width: 640px;">Apresentamos a seguir nossa proposta comercial para o fornecimento e instalação de carregadores para veículos elétricos, contemplando equipamentos de alta eficiência e confiabilidade.</div>
+      <div class="meta"><b>16 / 1.55</b><br>Sora Regular 400</div>
+    </div>
+    <div class="specimen">
+      <div class="tag">small</div>
+      <div style="font-size: 14px; line-height: 1.5; color: var(--fg-2);">Garantia de 10 anos sobre os módulos. Garantia de 1 ano sobre instalação elétrica.</div>
+      <div class="meta"><b>14 / 1.50</b><br>Sora Regular 400</div>
+    </div>
+    <div class="specimen">
+      <div class="tag">eyebrow</div>
+      <div class="eyebrow">ESCOPO DE FORNECIMENTO · 03</div>
+      <div class="meta"><b>11 / 1.40</b><br>Sora SemiBold 600<br>+0.14em · UPPERCASE</div>
+    </div>
+  </section>
+
+  <!-- Weights -->
+  <section>
+    <div class="eyebrow" style="margin-bottom: 16px;">WEIGHTS IN USE</div>
+    <div class="weights">
+      <div class="weight"><div class="num" style="font-weight: 300;">Aa</div><div class="name">Sora Light 300 · long body</div></div>
+      <div class="weight"><div class="num" style="font-weight: 400;">Aa</div><div class="name">Sora Regular 400 · body default</div></div>
+      <div class="weight"><div class="num" style="font-weight: 600;">Aa</div><div class="name">Sora SemiBold 600 · h3, h4, eyebrow</div></div>
+      <div class="weight"><div class="num" style="font-weight: 700;">Aa</div><div class="name">Sora Bold 700 · h1, h2</div></div>
+      <div class="weight"><div class="num" style="font-weight: 800;">Aa</div><div class="name">Sora ExtraBold 800 · display, hero</div></div>
+      <div class="weight"><div class="num" style="font-family: var(--font-mono);">Aa</div><div class="name">JetBrains Mono · code, specs</div></div>
+      <div class="weight"><div class="num" style="font-weight: 700; font-variant-numeric: tabular-nums;">1234</div><div class="name">Tabular figures · always on numbers</div></div>
+      <div class="weight"><div class="num" style="font-weight: 200;">Aa</div><div class="name">Sora ExtraLight 200 · editorial only</div></div>
+    </div>
+  </section>
+
+  <!-- Hero stat -->
+  <div class="data-callout">
+    <div class="lhs">
+      <div class="eyebrow">RESULTADO · 24 MESES</div>
+      <h2>Sua conta de luz cai pela metade — sem novo investimento mensal.</h2>
+    </div>
+    <div class="rhs">
+      <div class="stat"><div class="v green">−62%</div><div class="u">redução na conta</div></div>
+      <div class="stat"><div class="v">4,3</div><div class="u">anos de payback</div></div>
+    </div>
+  </div>
+
+  <!-- Case rules -->
+  <section>
+    <div class="eyebrow" style="margin-bottom: 12px;">CASE & NUMBER RULES</div>
+    <div class="case-row">
+      <div class="case-box">
+        <div class="lbl">HEADLINES · sentence case</div>
+        <div style="font-family: var(--font-display); font-weight: 700; font-size: 22px; letter-spacing: -0.01em;">Energia que paga sua conta</div>
+        <div style="color: var(--fg-3); margin-top: 8px; font-size: 13px;">Not "Energia Que Paga Sua Conta".</div>
+      </div>
+      <div class="case-box">
+        <div class="lbl">EYEBROWS · UPPERCASE +0.14em</div>
+        <div class="eyebrow">PROPOSTA COMERCIAL · 1002</div>
+        <div style="color: var(--fg-3); margin-top: 8px; font-size: 13px;">Section markers & technical labels.</div>
+      </div>
+      <div class="case-box">
+        <div class="lbl">NUMBERS · pt-BR, tabular</div>
+        <div class="readout" style="font-size: 22px;">R$ 24.851,40 · 12,075 kWp · 62 %</div>
+        <div style="color: var(--fg-3); margin-top: 8px; font-size: 13px;">Thousands "." decimal "," hard‑space units.</div>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

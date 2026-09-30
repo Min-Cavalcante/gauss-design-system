@@ -1,0 +1,368 @@
+<!-- @dsCard group="Brand" name="EV charger livery" subtitle="Printed faces — full-height GAUSS, big power number, wrap-around stripe belt" viewport="1180x2200" -->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Gauss — EV charger livery (printed faces)</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap">
+<style>
+  :root{
+    --mm:0.215px;            /* print scale: 1000 mm = 215 px */
+    --ink:#0B130D;           /* front/back shell — ink */
+    --d1:#1B5D24;            /* darkest green — side background */
+    --d2:#39B54A;            /* signature green */
+    --d3:#8FD79A;            /* light green — power number */
+    --cut:#5b665d;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;padding:56px;background:var(--bg-paper);font-family:'Sora',system-ui,sans-serif;color:var(--ink-900)}
+  .frame{max-width:1180px;margin:0 auto}
+
+  header{padding-bottom:32px;border-bottom:1px solid var(--border-hairline);margin-bottom:8px;display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+  .eb{font-family:'Sora';font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--gauss-green-700);margin-bottom:12px}
+  h1{font-family:'Sora';font-weight:800;font-size:clamp(38px,5vw,56px);letter-spacing:-0.03em;line-height:1;margin:0 0 12px}
+  header p{color:var(--fg-2);max-width:580px;font-size:16px;line-height:1.55;margin:0}
+  header .meta{font-family:'JetBrains Mono';font-size:11px;color:var(--fg-3);line-height:1.8;letter-spacing:0.06em;text-align:right}
+  header .meta b{color:var(--ink-900);font-family:'Sora';font-weight:600}
+
+  .row-label{display:flex;align-items:center;gap:16px;margin:56px 0 22px}
+  .row-label .ix{font-family:'JetBrains Mono';font-size:12px;color:var(--gauss-green-700);letter-spacing:0.1em}
+  .row-label h2{font-family:'Sora';font-weight:700;font-size:22px;letter-spacing:-0.01em;margin:0}
+  .row-label .rule{flex:1;height:1px;background:var(--border-hairline)}
+
+  .legend{display:flex;gap:28px;flex-wrap:wrap;margin:-6px 0 26px}
+  .legend .li{display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono';font-size:11px;letter-spacing:0.04em;color:var(--fg-2)}
+  .legend .sw{width:26px;height:16px;border-radius:3px}
+  .legend .sw.ink{background:var(--ink)}
+  .legend .sw.grn{background:var(--d1)}
+  .legend .sw.cut{background:transparent;border:1.5px dashed var(--cut)}
+
+  .faces{display:flex;gap:clamp(18px,3vw,40px);flex-wrap:wrap;align-items:flex-start}
+  .face-col{display:flex;flex-direction:column;gap:14px}
+  .face-cap{font-family:'JetBrains Mono';font-size:11px;letter-spacing:0.08em;color:var(--fg-3)}
+  .face-cap b{font-family:'Sora';font-weight:700;font-size:14px;color:var(--ink-900);letter-spacing:-0.01em;display:block;margin-bottom:3px}
+  .face{position:relative;border-radius:16px 16px 7px 7px;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,0.05),0 24px 40px -22px rgba(0,0,0,0.55)}
+  .dcface{width:calc(1000*var(--mm));height:calc(2000*var(--mm))}
+  .face.ink{background:linear-gradient(180deg,#0e1711,var(--ink))}
+  .face.green{background:var(--d1)}
+  .plinth{position:absolute;left:0;right:0;bottom:0;height:calc(140*var(--mm));background:#050806;box-shadow:inset 0 1px 0 rgba(255,255,255,0.05);z-index:5}
+
+  /* crown lockup */
+  .crown{position:absolute;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:6px;z-index:4}
+  .lockup{display:flex;align-items:center;gap:7px}
+  .lockup svg{display:block}
+  .wm{font-family:'Bebas Neue',sans-serif;text-transform:uppercase;color:#fff;line-height:.8;letter-spacing:0.04em}
+  .tag{font-family:'Sora';font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--d3);font-size:9px}
+
+  /* diagonal three-green stripes — wrap the operating faces */
+  .belt{position:absolute;display:flex;flex-direction:column;gap:calc(26*var(--mm));z-index:3;transform:rotate(-22deg);transform-origin:center;pointer-events:none}
+  .belt i{height:calc(48*var(--mm));width:calc(1800*var(--mm))}
+  .belt i:nth-child(1){background:var(--d1)}
+  .belt i:nth-child(2){background:var(--d2)}
+  .belt i:nth-child(3){background:var(--d3)}
+
+  /* big power number — bottom-right, partially cut, decentralised */
+  .bignum{position:absolute;right:calc(-90*var(--mm));bottom:calc(150*var(--mm));font-family:'Bebas Neue',sans-serif;font-size:calc(1040*var(--mm));line-height:.62;letter-spacing:-0.03em;color:var(--d3);z-index:4}
+
+  /* large side vents (louvres) with GAUSS printed over */
+  .louvers{position:absolute;left:calc(60*var(--mm));right:calc(60*var(--mm));top:calc(110*var(--mm));bottom:calc(210*var(--mm));border-radius:6px;background:repeating-linear-gradient(180deg,rgba(0,0,0,0.34) 0 calc(15*var(--mm)),rgba(255,255,255,0.06) calc(15*var(--mm)) calc(22*var(--mm)));box-shadow:inset 0 0 0 1px rgba(0,0,0,0.3),inset 0 2px 6px rgba(0,0,0,0.35);z-index:1}
+
+  /* big power number (front) */
+  .power{position:absolute;left:0;right:0;display:flex;align-items:baseline;justify-content:center;gap:calc(20*var(--mm));z-index:4;color:var(--d3)}
+  .power .n{font-family:'Bebas Neue',sans-serif;font-size:calc(560*var(--mm));line-height:.78;letter-spacing:-0.01em}
+  .power .u{font-family:'Sora';font-weight:800;font-size:calc(150*var(--mm));letter-spacing:-0.02em}
+  .power .dc{position:absolute;top:calc(-44*var(--mm));font-family:'JetBrains Mono';font-size:calc(56*var(--mm));letter-spacing:0.3em;color:rgba(255,255,255,0.5)}
+
+  /* full-height GAUSS on sides */
+  .vname{position:absolute;left:0;right:0;top:calc(120*var(--mm));bottom:calc(120*var(--mm));display:flex;align-items:center;justify-content:center;z-index:2}
+  .vname span{font-family:'Bebas Neue',sans-serif;writing-mode:vertical-rl;transform:rotate(180deg);text-transform:uppercase;color:#fff;font-size:calc(250*var(--mm));letter-spacing:calc(235*var(--mm));line-height:1}
+  .side-tag{position:absolute;z-index:4;font-family:'Sora';font-weight:600;writing-mode:vertical-rl;transform:rotate(180deg);letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.55);font-size:9px}
+
+  /* status light pipe (front) */
+  .spine{position:absolute;left:calc(30*var(--mm));top:calc(60*var(--mm));bottom:calc(190*var(--mm));width:5px;border-radius:999px;background:linear-gradient(180deg,var(--d3),var(--d2),var(--d1));box-shadow:0 0 9px rgba(57,181,74,0.5);z-index:4}
+
+  /* cutouts */
+  .cut{position:absolute;border:1.5px dashed var(--cut);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:4px;color:#aeb7af;z-index:4;background:rgba(5,8,6,0.35)}
+  .cut .ct{font-family:'Sora';font-weight:600;font-size:10px;letter-spacing:0.04em;color:#cfd6cf}
+  .cut .cs{font-family:'JetBrains Mono';font-size:8px;letter-spacing:0.06em;color:#9aa39a;line-height:1.4;padding:0 6px}
+  .cut .ico{width:18px;height:18px;opacity:.6}
+
+  .specplate{position:absolute;left:calc(34*var(--mm));right:calc(34*var(--mm));display:flex;gap:6px;flex-wrap:wrap;justify-content:center;z-index:4}
+  .specplate .chip{font-family:'JetBrains Mono';font-size:8px;letter-spacing:0.08em;color:rgba(255,255,255,0.82);border:1px solid rgba(255,255,255,0.2);border-radius:5px;padding:4px 7px;white-space:nowrap}
+  .specplate .chip.g{color:var(--d3);border-color:rgba(143,215,154,0.5)}
+
+  .qr{width:calc(280*var(--mm));height:calc(280*var(--mm));background:#fff;border-radius:8px;padding:8px;display:grid;grid-template-columns:repeat(7,1fr);grid-template-rows:repeat(7,1fr);gap:2px}
+  .qr i{background:var(--ink);border-radius:1px}
+  .qr i.o{background:transparent}
+
+  /* AC */
+  .acface{width:calc(330*var(--mm));height:calc(470*var(--mm));border-radius:12px 12px 5px 5px}
+  .acface.side{width:calc(150*var(--mm))}
+
+  /* optional structure / canopy */
+  .canopy-wrap{background:var(--ink-50);border:1px solid var(--border-hairline);border-radius:18px;padding:48px 56px;display:flex;justify-content:center}
+  .canopy{position:relative;width:calc(2600*var(--mm));height:calc(2600*var(--mm))}
+  .canopy .roof{position:absolute;left:0;right:0;top:0;height:calc(360*var(--mm));background:var(--ink);border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 18px 30px -16px rgba(0,0,0,0.5)}
+  .canopy .roof .fascia{display:flex;align-items:center;gap:14px;z-index:2}
+  .canopy .roof .belt2{position:absolute;left:0;right:0;bottom:0;height:calc(70*var(--mm));display:flex;flex-direction:column}
+  .canopy .roof .belt2 i{flex:1}
+  .canopy .roof .belt2 i:nth-child(1){background:var(--d1)}.canopy .roof .belt2 i:nth-child(2){background:var(--d2)}.canopy .roof .belt2 i:nth-child(3){background:var(--d3)}
+  .canopy .post{position:absolute;top:calc(360*var(--mm));bottom:0;width:calc(150*var(--mm));background:linear-gradient(90deg,#0e1711,var(--ink));border-radius:5px}
+  .canopy .post.l{left:calc(120*var(--mm))}.canopy .post.r{right:calc(120*var(--mm))}
+  .canopy .pad{position:absolute;left:calc(60*var(--mm));right:calc(60*var(--mm));bottom:0;height:calc(70*var(--mm));background:var(--ink-300);border-radius:4px}
+  .canopy .mini{position:absolute;bottom:calc(70*var(--mm));left:50%;transform:translateX(-50%);width:calc(640*var(--mm));height:calc(1500*var(--mm));background:linear-gradient(180deg,#0e1711,var(--ink));border-radius:12px 12px 4px 4px;display:flex;flex-direction:column;align-items:center;gap:calc(40*var(--mm));padding-top:calc(70*var(--mm))}
+  .canopy .mini .scr{width:70%;height:calc(360*var(--mm));border:1.5px dashed var(--cut);border-radius:8px}
+  .canopy .mini .pw{font-family:'Bebas Neue',sans-serif;color:var(--d3);font-size:calc(280*var(--mm));line-height:.8}
+
+  .spec{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+  @media(max-width:880px){.spec{grid-template-columns:repeat(2,1fr)}}
+  .spec .card{background:#fff;border:1px solid var(--border-hairline);border-radius:14px;padding:20px}
+  .spec .sw{height:46px;border-radius:8px;margin-bottom:14px;position:relative;overflow:hidden}
+  .spec .k{font-family:'JetBrains Mono';font-size:9px;letter-spacing:0.1em;color:var(--fg-3);text-transform:uppercase}
+  .spec .v{font-family:'Sora';font-weight:700;font-size:14px;margin-top:3px}
+  .spec .d{font-size:12px;color:var(--fg-2);line-height:1.45;margin-top:6px}
+
+  .regtable{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border-hairline);border-radius:14px;overflow:hidden}
+  .regtable td{padding:13px 18px;border-bottom:1px solid var(--border-hairline);font-size:13px}
+  .regtable tr:last-child td{border-bottom:none}
+  .regtable td:first-child{font-family:'JetBrains Mono';font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--fg-3);width:38%}
+  .regtable td:last-child{font-family:'Sora';font-weight:600;color:var(--ink-900)}
+
+  .footnote{margin-top:48px;padding:20px 24px;background:var(--ink-50);border-left:3px solid var(--gauss-green);border-radius:0 8px 8px 0;font-size:13px;color:var(--fg-2);line-height:1.6}
+  .footnote b{font-family:'Sora';font-weight:700;color:var(--ink-900)}
+
+  .markrow{display:flex;gap:7px}
+</style>
+</head>
+<body>
+<div class="frame">
+
+  <header>
+    <div>
+      <div class="eb">BRAND · HARDWARE · EV CHARGING LIVERY</div>
+      <h1>What we print on<br>the charger.</h1>
+      <p>Bodywork artwork, not the screen. The power number is the hero on the front — just “60” in light green, oversized in the bottom-right corner, deliberately cropped by the edge. The sides are large vents with GAUSS printed at full height across the louvres; three greens cross the operating faces as a diagonal stripe set; the lockup sits above the screen. Live readouts stay on the operator display. Cutouts are dashed.</p>
+    </div>
+    <div class="meta">
+      <b>DC fast charger</b><br>
+      1000 × 1000 × 2000 mm · 4 faces<br>
+      60 kW · 2× CCS2 · IP55<br><br>
+      <b>AC wallbox</b><br>
+      330 × 470 mm · mural<br>
+      22 kW · Type 2 · IP54
+    </div>
+  </header>
+
+  <div class="row-label"><span class="ix">01 ·</span><h2>DC fast charger — the four faces</h2><div class="rule"></div></div>
+  <div class="legend">
+    <div class="li"><span class="sw ink"></span>Shell ink (frente / traseira)</div>
+    <div class="li"><span class="sw grn"></span>Verde escuro (laterais)</div>
+    <div class="li"><span class="sw cut"></span>Recorte de hardware — não imprimir</div>
+  </div>
+
+  <div class="faces">
+
+    <!-- FRENTE -->
+    <div class="face-col">
+      <div class="face-cap"><b>01 · Frente</b>1000 × 2000 mm · operação</div>
+      <div class="face dcface ink">
+        <div class="spine"></div>
+        <div class="crown" style="top:calc(64*var(--mm))">
+          <div class="lockup">
+            <svg width="54" height="23" viewBox="0 0 150 65" aria-hidden="true">
+              <polygon points="0,0 27,0 37,16 0,16" fill="#1B5D24"/><polygon points="61,0 150,0 150,16 72,16" fill="#1B5D24"/>
+              <polygon points="0,25 44,25 54,41 0,41" fill="#39B54A"/><polygon points="78,25 150,25 150,41 89,41" fill="#39B54A"/>
+              <polygon points="0,49 61,49 71,65 0,65" fill="#8FD79A"/><polygon points="96,49 150,49 150,65 106,65" fill="#8FD79A"/>
+            </svg>
+            <div class="wm" style="font-size:21px">Gauss</div>
+          </div>
+        </div>
+        <!-- screen -->
+        <div class="cut" style="left:calc(70*var(--mm));right:calc(70*var(--mm));top:calc(230*var(--mm));height:calc(440*var(--mm))">
+          <div class="ct">TELA</div><div class="cs">conteúdo dinâmico · não imprimir</div>
+        </div>
+        <!-- card reader -->
+        <div class="cut" style="left:50%;transform:translateX(-50%);top:calc(740*var(--mm));width:calc(150*var(--mm));height:calc(150*var(--mm));border-radius:999px">
+          <div class="cs">LEITOR<br>RFID</div>
+        </div>
+        <!-- diagonal stripes -->
+        <div class="belt" style="left:calc(-380*var(--mm));top:calc(1380*var(--mm))"><i></i><i></i><i></i></div>
+        <!-- power number — bottom-right, partially cut -->
+        <div class="bignum">60</div>
+        <div class="plinth"></div>
+      </div>
+    </div>
+
+    <!-- LATERAL ESQ -->
+    <div class="face-col">
+      <div class="face-cap"><b>02 · Lateral</b>1000 × 2000 mm · marca</div>
+      <div class="face dcface green">
+        <div class="louvers"></div>
+        <div class="vname"><span>Gauss</span></div>
+        <div class="side-tag" style="right:calc(70*var(--mm));top:calc(150*var(--mm))">Solar · BESS · EV</div>
+        <div class="plinth"></div>
+      </div>
+    </div>
+
+    <!-- TRASEIRA -->
+    <div class="face-col">
+      <div class="face-cap"><b>03 · Traseira</b>1000 × 2000 mm · institucional</div>
+      <div class="face dcface ink">
+        <div class="crown" style="top:calc(140*var(--mm));gap:10px">
+          <svg width="80" height="35" viewBox="0 0 150 65" aria-hidden="true">
+            <polygon points="0,0 27,0 37,16 0,16" fill="#1B5D24"/><polygon points="61,0 150,0 150,16 72,16" fill="#1B5D24"/>
+            <polygon points="0,25 44,25 54,41 0,41" fill="#39B54A"/><polygon points="78,25 150,25 150,41 89,41" fill="#39B54A"/>
+            <polygon points="0,49 61,49 71,65 0,65" fill="#8FD79A"/><polygon points="96,49 150,49 150,65 106,65" fill="#8FD79A"/>
+          </svg>
+          <div class="wm" style="font-size:34px">Gauss</div>
+          <div class="tag" style="font-size:10px">Solar · BESS · EV</div>
+        </div>
+        <div style="position:absolute;left:0;right:0;top:calc(560*var(--mm));display:flex;flex-direction:column;align-items:center;gap:8px;z-index:4">
+          <div class="qr" id="qr"></div>
+          <div style="font-family:'JetBrains Mono';font-size:8px;letter-spacing:0.08em;color:rgba(255,255,255,0.7)">APP GAUSS · gauss.energia</div>
+        </div>
+        <div class="cut" style="left:calc(70*var(--mm));right:calc(70*var(--mm));top:calc(1400*var(--mm));height:calc(150*var(--mm))">
+          <div class="ct">PLACA TÉCNICA</div><div class="cs">nº de série · selo INMETRO · dados elétricos</div>
+        </div>
+        <div class="specplate" style="top:calc(1600*var(--mm))">
+          <span class="chip">380 V · 3F</span><span class="chip">OCPP 1.6</span><span class="chip">4G · Wi‑Fi</span>
+        </div>
+        <div style="position:absolute;left:0;right:0;bottom:calc(160*var(--mm));text-align:center;font-family:'JetBrains Mono';font-size:8px;letter-spacing:0.08em;color:rgba(255,255,255,0.55);z-index:4">SUPORTE 0800 000 0000</div>
+        <div class="plinth"></div>
+      </div>
+    </div>
+
+    <!-- LATERAL DIR -->
+    <div class="face-col">
+      <div class="face-cap"><b>04 · Lateral</b>1000 × 2000 mm · marca</div>
+      <div class="face dcface green">
+        <div class="louvers"></div>
+        <div class="vname"><span>Gauss</span></div>
+        <div class="side-tag" style="left:calc(70*var(--mm));top:calc(150*var(--mm))">Solar · BESS · EV</div>
+        <div class="plinth"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- AC -->
+  <div class="row-label"><span class="ix">02 ·</span><h2>AC wallbox — front &amp; side</h2><div class="rule"></div></div>
+  <div class="faces">
+    <div class="face-col">
+      <div class="face-cap"><b>Frente</b>330 × 470 mm · mural</div>
+      <div class="face acface ink">
+        <div class="crown" style="top:calc(34*var(--mm));gap:5px">
+          <div class="lockup">
+            <svg width="42" height="18" viewBox="0 0 150 65" aria-hidden="true">
+              <polygon points="0,0 27,0 37,16 0,16" fill="#1B5D24"/><polygon points="61,0 150,0 150,16 72,16" fill="#1B5D24"/>
+              <polygon points="0,25 44,25 54,41 0,41" fill="#39B54A"/><polygon points="78,25 150,25 150,41 89,41" fill="#39B54A"/>
+              <polygon points="0,49 61,49 71,65 0,65" fill="#8FD79A"/><polygon points="96,49 150,49 150,65 106,65" fill="#8FD79A"/>
+            </svg>
+            <div class="wm" style="font-size:14px">Gauss</div>
+          </div>
+        </div>
+        <div class="cut" style="left:50%;transform:translateX(-50%);top:calc(140*var(--mm));width:calc(120*var(--mm));height:calc(120*var(--mm));border-radius:999px">
+          <div class="cs">TOMADA<br>Type 2</div>
+        </div>
+        <div class="power" style="top:calc(290*var(--mm))"><span class="n" style="font-size:calc(180*var(--mm))">22</span><span class="u" style="font-size:calc(60*var(--mm))">kW</span></div>
+        <div class="belt" style="left:0;right:0;bottom:calc(20*var(--mm));gap:calc(8*var(--mm));transform:none"><i style="width:100%;height:calc(14*var(--mm))"></i><i style="width:100%;height:calc(14*var(--mm))"></i><i style="width:100%;height:calc(14*var(--mm))"></i></div>
+      </div>
+    </div>
+    <div class="face-col">
+      <div class="face-cap"><b>Lateral</b>150 × 470 mm</div>
+      <div class="face acface side green">
+        <div class="vname" style="top:calc(50*var(--mm));bottom:calc(50*var(--mm))"><span style="font-size:calc(108*var(--mm));letter-spacing:calc(34*var(--mm))">Gauss</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTIONAL STRUCTURE -->
+  <div class="row-label"><span class="ix">03 ·</span><h2>Estrutura opcional — cobertura de marca</h2><div class="rule"></div></div>
+  <p style="color:var(--fg-2);font-size:15px;line-height:1.6;max-width:62ch;margin:-6px 0 24px">Um pórtico de marca pode envolver o carregador: posts em ink, fascia superior com o lockup e a faixa de três verdes, abrigando o equipamento. Vendido à parte, segue a mesma família visual.</p>
+  <div class="canopy-wrap">
+    <div class="canopy">
+      <div class="roof">
+        <div class="fascia">
+          <svg width="64" height="28" viewBox="0 0 150 65" aria-hidden="true">
+            <polygon points="0,0 27,0 37,16 0,16" fill="#1B5D24"/><polygon points="61,0 150,0 150,16 72,16" fill="#1B5D24"/>
+            <polygon points="0,25 44,25 54,41 0,41" fill="#39B54A"/><polygon points="78,25 150,25 150,41 89,41" fill="#39B54A"/>
+            <polygon points="0,49 61,49 71,65 0,65" fill="#8FD79A"/><polygon points="96,49 150,49 150,65 106,65" fill="#8FD79A"/>
+          </svg>
+          <div class="wm" style="font-size:30px">Gauss</div>
+        </div>
+        <div class="belt2"><i></i><i></i><i></i></div>
+      </div>
+      <div class="post l"></div>
+      <div class="post r"></div>
+      <div class="mini">
+        <div class="scr"></div>
+        <div class="pw">60<span style="font-family:'Sora';font-weight:800;font-size:calc(80*var(--mm))">kW</span></div>
+      </div>
+      <div class="pad"></div>
+    </div>
+  </div>
+
+  <!-- livery pattern spec -->
+  <div class="row-label"><span class="ix">04 ·</span><h2>The livery pattern</h2><div class="rule"></div></div>
+  <div class="spec">
+    <div class="card">
+      <div class="sw" style="background:var(--ink)"></div>
+      <div class="k">Shell · frente/traseira</div><div class="v">Ink matte</div>
+      <div class="d">#0B130D powder‑coat nas faces de operação e institucional.</div>
+    </div>
+    <div class="card">
+      <div class="sw" style="background:var(--d1)"></div>
+      <div class="k">Laterais</div><div class="v">Vents + GAUSS</div>
+      <div class="d">Grandes venezianas com GAUSS impresso por cima, em altura total.</div>
+    </div>
+    <div class="card">
+      <div class="sw" style="background:var(--ink);display:flex;flex-direction:column;justify-content:center;gap:3px;padding:8px">
+        <span style="height:6px;background:var(--d1);border-radius:1px"></span><span style="height:6px;background:var(--d2);border-radius:1px"></span><span style="height:6px;background:var(--d3);border-radius:1px"></span>
+      </div>
+      <div class="k">Faixa</div><div class="v">Três verdes · diagonal</div>
+      <div class="d">Listras diagonais a −22° que cruzam as faces de operação.</div>
+    </div>
+    <div class="card">
+      <div class="sw" style="background:var(--ink);display:flex;align-items:center;justify-content:center">
+        <span style="font-family:'Bebas Neue';font-size:30px;color:var(--d3);line-height:1">60<span style="font-family:'Sora';font-weight:800;font-size:13px">kW</span></span>
+      </div>
+      <div class="k">Número de potência</div><div class="v">60 · canto cortado</div>
+      <div class="d">Só o “60” em #8FD79A, gigante e parcialmente cortado no canto inferior.</div>
+    </div>
+    <div class="card">
+      <div class="sw" style="background:#fff;border:1px solid var(--border-hairline);display:flex;align-items:center;justify-content:center">
+        <span style="font-family:'Bebas Neue';font-size:26px;letter-spacing:0.06em;color:var(--ink-900)">GAUSS</span>
+      </div>
+      <div class="k">Lockup</div><div class="v">Acima da tela</div>
+      <div class="d">Marca + Bebas no topo da frente e centralizado na traseira.</div>
+    </div>
+  </div>
+
+  <div class="row-label"><span class="ix">05 ·</span><h2>Specs fixas que vão impressas (DC)</h2><div class="rule"></div></div>
+  <table class="regtable">
+    <tr><td>Potência nominal</td><td>60 kW DC</td></tr>
+    <tr><td>Conectores</td><td>2× CCS2</td></tr>
+    <tr><td>Entrada</td><td>380 V · trifásico</td></tr>
+    <tr><td>Grau de proteção</td><td>IP55 · IK10</td></tr>
+    <tr><td>Comunicação</td><td>OCPP 1.6 · 4G / Wi‑Fi</td></tr>
+    <tr><td>Dimensões</td><td>1000 × 1000 × 2000 mm</td></tr>
+  </table>
+
+  <div class="footnote">
+    <b>O que imprimimos:</b> cor do shell (ink na frente/traseira, verde escuro nas laterais), o número de potência em verde claro, GAUSS em altura total nas laterais, lockup acima da tela e na traseira, a faixa horizontal de três verdes que circunda o equipamento, QR estático do app e as specs fixas. <b>Fora do escopo:</b> tudo da tela (carga, kWh, tempo, preço) é dinâmico. Recortes tracejados (tela, conectores, leitor, ventilação, placa) são features do hardware.
+  </div>
+
+</div>
+
+<script>
+  function buildQR(){
+    var qr=document.getElementById('qr'); if(!qr)return; qr.innerHTML='';
+    var P=[1,1,1,0,1,1,1, 1,0,1,1,0,0,1, 1,0,1,0,1,0,1, 0,1,0,1,0,1,0, 1,0,1,0,1,1,1, 1,1,0,0,1,0,0, 1,0,1,1,0,1,1];
+    for(var i=0;i<49;i++){var c=document.createElement('i');if(!P[i])c.className='o';qr.appendChild(c);}
+  }
+  window.addEventListener('load',buildQR);
+</script>
+</body>
+</html>
